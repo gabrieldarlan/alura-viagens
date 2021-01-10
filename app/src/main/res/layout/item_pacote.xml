@@ -57,14 +57,13 @@
         app:layout_constraintTop_toBottomOf="@id/item_pacote_divisor" />
 
     <TextView
-        android:text="R$ 243,99"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/item_pacote_dias"
-        app:layout_constraintStart_toStartOf="@id/item_pacote_dias"
-        android:id="@id/item_pacote_preco"
+        android:text="R$ 243,99"
         android:textColor="@android:color/holo_green_dark"
         android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/item_pacote_dias"
+        app:layout_constraintTop_toBottomOf="@id/item_pacote_dias"
 
         />
 </androidx.constraintlayout.widget.ConstraintLayout>
