@@ -15,6 +15,9 @@ import java.util.List;
 
 import br.com.alura.aluraviagens.R;
 import br.com.alura.aluraviagens.model.Pacote;
+import br.com.alura.aluraviagens.util.DiasUtil;
+import br.com.alura.aluraviagens.util.MoedaUtil;
+import br.com.alura.aluraviagens.util.ResourcesUtil;
 
 public class ListaPacotesAdapter extends BaseAdapter {
 
@@ -48,22 +51,37 @@ public class ListaPacotesAdapter extends BaseAdapter {
 
         Pacote pacote = pacotes.get(position);
 
-        TextView local = viewCriada.findViewById(R.id.item_pacote_local);
-        local.setText(pacote.getLocal());
-
-        ImageView imagem = viewCriada.findViewById(R.id.item_pacote_imagem);
-        Resources resources = context.getResources();
-        int idDoDrawable = resources.getIdentifier(pacote.getImagem(), "drawable", context.getPackageName());
-        @SuppressLint("UseCompatLoadingForDrawables") Drawable drawableImagemPacote = resources.getDrawable(idDoDrawable);
-        imagem.setImageDrawable(drawableImagemPacote);
-
-
-        TextView dias = viewCriada.findViewById(R.id.item_pacote_dias);
-        dias.setText(pacote.getDias() + " dias");
-
-        TextView preco = viewCriada.findViewById(R.id.item_pacote_preco);
-        preco.setText(pacote.getPreco().toString());
+        mostraLocal(viewCriada, pacote);
+        mostraImagem(viewCriada, pacote);
+        mostraDias(viewCriada, pacote);
+        mostraPreco(viewCriada, pacote);
 
         return viewCriada;
+    }
+
+    private void mostraPreco(View view, Pacote pacote) {
+        TextView preco = view.findViewById(R.id.item_pacote_preco);
+        final String moedaBrasileira = MoedaUtil.formataParaBrasileiro(pacote.getPreco());
+        preco.setText(moedaBrasileira);
+    }
+
+    private void mostraDias(View view, Pacote pacote) {
+        TextView dias = view.findViewById(R.id.item_pacote_dias);
+        String diasEmTexto = DiasUtil.formataEmTexto(pacote.getDias());
+        dias.setText(diasEmTexto);
+    }
+
+
+    private void mostraImagem(View view, Pacote pacote) {
+        ImageView imagem = view.findViewById(R.id.item_pacote_imagem);
+        Drawable drawableImagemPacote = ResourcesUtil.devolveDrawable(context,
+                pacote.getImagem());
+        imagem.setImageDrawable(drawableImagemPacote);
+    }
+
+
+    private void mostraLocal(View view, Pacote pacote) {
+        TextView local = view.findViewById(R.id.item_pacote_local);
+        local.setText(pacote.getLocal());
     }
 }
