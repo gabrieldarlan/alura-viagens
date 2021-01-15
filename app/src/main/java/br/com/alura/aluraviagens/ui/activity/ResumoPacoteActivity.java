@@ -3,6 +3,7 @@ package br.com.alura.aluraviagens.ui.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
@@ -33,8 +34,9 @@ public class ResumoPacoteActivity extends AppCompatActivity {
                 "sao_paulo_sp",
                 2,
                 new BigDecimal("243.99"));
-
         mostraDadosPacoteEmTela(pacoteSaoPaulo);
+        final Intent intent = new Intent(this, PagamentoActivity.class);
+        startActivity(intent);
     }
 
     private void mostraDadosPacoteEmTela(Pacote pacote) {

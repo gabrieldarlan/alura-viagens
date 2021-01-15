@@ -7,4 +7,10 @@
     <string name="preco_final">Preço final:</string>
     <string name="realizar_pagamento">Realizar Pagamento</string>
     <string name="imagem">Imagem</string>
+    <string name="numero_do_cartao">Número do cartão</string>
+    <string name="texto_de_orientacao">Digite as informações do cartão de crédito que você deseja usar para o pagamento</string>
+    <string name="mes_cartao">MM</string>
+    <string name="ano_cartao">AA</string>
+    <string name="cvc_cartao">CVC</string>
+    <string name="nome_no_cartao">Nome no cartão</string>
 </resources>
